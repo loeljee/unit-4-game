@@ -1,0 +1,44 @@
+body {
+    font-family: Star Jedi;
+    color: #ffd700;
+}
+h1 {
+    text-align: center;
+}    
+
+#yoda {
+    background: url(../images/yoda.jpg);
+    background-size: 100%;
+}
+
+#chewy {
+    background: url(../images/chewy.jpeg);
+    background-size: 100%;
+
+}
+
+#vader {
+    background: url(../images/vader.jpeg);
+    background-size: 100%;
+}
+
+#sidious {
+    background: url(../images/sidious.jpg);
+    background-size: 120%;
+    background-position: -30px 0px;
+}
+
+h5, h6 {  
+    font-style: bold;
+}
+
+.card {
+    margin: 20px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+body {
+    background: url(../images/space.jpg);
+    background-size: 130%;
+}
