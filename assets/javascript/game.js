@@ -1,30 +1,43 @@
 
 var yoda = {
-    healthPoints: 180,
+    healthPoints: 100,
+    attack: 8,
     attackPower: 8,
     counterPower: 20,
 }
 var chewy = {
-    healthpoints: 130,
+    healthPoints: 130,
+    attack: 10,
     attackPower: 10,
     counterPower: 15,
 }
 var sidious = {
-    healthpoints: 200,
+    healthPoints: 200,
+    attack: 6,
     attackPower: 6,
     counterPower: 18,
 }
 var vader = {
-    healthpoints: 150,
+    healthPoints: 150,
+    attack: 7,
     attackPower: 7,
     counterPower: 17,
 }
+
 
 function checkUser() {
     user = $("#userPick").children()[0].id
 }
 function checkEnemy() {
     enemy = $("#userEnemy").children()[0].id
+}
+
+function enemyAfter(){
+    enemy.healthPoints = enemy.healthPoints - user.attackPower;
+} 
+function userAfter() {
+    user.healthPoints = user.healthPoints - enemy.counterPower;
+    user.attackPower = user.attackPower + user.attack;
 }
 
 $("#yoda").on("click", function () {
@@ -106,15 +119,29 @@ $(".btn").on("click", function () {
         else if (enemy === "sidious") {
             enemy = sidious;
         }
-        enemyHealth = enemy.healthPoints - user.attackPower;
-        userHealth = user.healthpoints - enemy.counterPower;
-        console.log(enemyHealth);
-        console.log(userHealth);
     }
+    if 
+    console.log($("#fighters"));
 });
 
 $(".btn").on("click", function () {
-    enemyHealth - user.attackPower
+    enemyAfter();
+    userAfter();
+    console.log("My health: " + user.healthPoints);
+    console.log("Enemy health: " + enemy.healthPoints);
+    console.log(user.attackPower);
+    if (enemy.healthPoints <= 0){
+        console.log("defeated");
+        $("#userEnemy").empty();
+        $("#userPick").width(600);
+        $("#userPick").height(300);
+    }
+    if (user.healthPoints <= 0){
+        $("#userPick").empty();
+        $("#userEnemy").width(600);
+        $("#userEnemy").height(300);
+        alert("LOSER");
+    }
 });
 
 
