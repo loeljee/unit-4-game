@@ -93,8 +93,6 @@ $(".btn").on("click", function () {
     checkUser();
     checkEnemy();
     if (!$("#userEnemy").is(':empty')) {
-        console.log(user);
-        console.log(enemy);
         if (user === "yoda") {
             user = yoda;
         }
@@ -120,8 +118,9 @@ $(".btn").on("click", function () {
             enemy = sidious;
         }
     }
-    if 
-    console.log($("#fighters"));
+        if ($(".card").is(':empty')) {
+    console.log($("IT WORKS"));
+        }
 });
 
 $(".btn").on("click", function () {
@@ -133,15 +132,19 @@ $(".btn").on("click", function () {
     if (enemy.healthPoints <= 0){
         console.log("defeated");
         $("#userEnemy").empty();
-        $("#userPick").width(600);
-        $("#userPick").height(300);
+        // $("#userPick").width(600);
+        // $("#userPick").height(300);
     }
-    if (user.healthPoints <= 0){
-        $("#userPick").empty();
-        $("#userEnemy").width(600);
-        $("#userEnemy").height(300);
+    if (user.healthPoints && enemy.healthPoints <= 0){
+        
+    }
+    if ((user.healthPoints <= 0)&&!(enemy.healthPoints <= 0)){
+        // $("#userPick").empty();
+        // $("#userEnemy").width(600);
+        // $("#userEnemy").height(300);
         alert("LOSER");
     }
+
 });
 
 
