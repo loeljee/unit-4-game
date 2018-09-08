@@ -1,27 +1,27 @@
 
 var yoda = {
-    healthPoints: 100,
+    healthPoints: 140,
     attack: 8,
     attackPower: 8,
-    counterPower: 20,
+    counterPower: 12,
 }
 var chewy = {
-    healthPoints: 130,
+    healthPoints: 150,
     attack: 10,
     attackPower: 10,
     counterPower: 15,
 }
 var sidious = {
-    healthPoints: 200,
+    healthPoints: 145,
     attack: 6,
     attackPower: 6,
-    counterPower: 18,
+    counterPower: 14,
 }
 var vader = {
-    healthPoints: 150,
+    healthPoints: 155,
     attack: 7,
     attackPower: 7,
-    counterPower: 17,
+    counterPower: 13,
 }
 
 
@@ -32,9 +32,9 @@ function checkEnemy() {
     enemy = $("#userEnemy").children()[0].id
 }
 
-function enemyAfter(){
+function enemyAfter() {
     enemy.healthPoints = enemy.healthPoints - user.attackPower;
-} 
+}
 function userAfter() {
     user.healthPoints = user.healthPoints - enemy.counterPower;
     user.attackPower = user.attackPower + user.attack;
@@ -90,38 +90,54 @@ $("#sidious").on("click", function () {
 
 
 $(".btn").on("click", function () {
+    if ($("#userPick").is(':empty')) {
+        alert("CHOOSE YOUR CHARECTER!")
+    }
+    if (($("#userEnemy").is(':empty')) && (!$("#userPick").is(':empty'))) {
+        alert("CHOOSE YOUR OPPONENT!")
+    }
     checkUser();
     checkEnemy();
     if (!$("#userEnemy").is(':empty')) {
         if (user === "yoda") {
             user = yoda;
+            $("#yhp").html(user.healthPoints);
         }
         else if (user === "chewy") {
             user = chewy;
+            $("#chp").html(user.healthPoints);
         }
         else if (user === "vader") {
             user = vader;
+            $("#vhp").html(user.healthPoints);
         }
         else if (user === "sidious") {
             user = sidious;
+            $("#shp").html(user.healthPoints);
         }
         if (enemy === "yoda") {
             enemy = yoda;
+            $("#yhp").html(enemy.healthPoints);
         }
         else if (enemy === "chewy") {
             enemy = chewy;
+            $("#chp").html(enemy.healthPoints);
         }
         else if (enemy === "vader") {
             enemy = vader;
+            $("#vhp").html(enemy.healthPoints);
         }
         else if (enemy === "sidious") {
             enemy = sidious;
+            $("#shp").html(enemy.healthPoints);
         }
     }
-        if ($(".card").is(':empty')) {
-    console.log($("IT WORKS"));
-        }
 });
+
+var defeat = 0;
+function defeated() {
+    defeat++;
+}
 
 $(".btn").on("click", function () {
     enemyAfter();
@@ -129,25 +145,63 @@ $(".btn").on("click", function () {
     console.log("My health: " + user.healthPoints);
     console.log("Enemy health: " + enemy.healthPoints);
     console.log(user.attackPower);
-    if (enemy.healthPoints <= 0){
-        console.log("defeated");
+    if (enemy.healthPoints <= 0) {
+        console.log(defeat);
+        defeated();
         $("#userEnemy").empty();
         // $("#userPick").width(600);
         // $("#userPick").height(300);
     }
-    if (user.healthPoints && enemy.healthPoints <= 0){
-        
+    if (user.healthPoints && enemy.healthPoints <= 0) {
+
+
     }
-    if ((user.healthPoints <= 0)&&!(enemy.healthPoints <= 0)){
-        // $("#userPick").empty();
-        // $("#userEnemy").width(600);
-        // $("#userEnemy").height(300);
+    if ((user.healthPoints <= 0) && !(enemy.healthPoints <= 0)) {
+        $("#userPick").empty();
+        $(".card").width(600);
+        $(".card").height(300);
         alert("LOSER");
     }
-
+    if (defeat === 3) {
+        $("#userEnemy").empty();
+        $(".card").width(600);
+        $(".card").height(300);
+        alert("WINNER");
+    }
+    checkUser();
+    checkEnemy();
+    if (user === "yoda") {
+        user = yoda;
+        $("#yhp").html(user.healthPoints);
+    }
+    else if (user === "chewy") {
+        user = chewy;
+        $("#chp").html(user.healthPoints);
+    }
+    else if (user === "vader") {
+        user = vader;
+        $("#vhp").html(user.healthPoints);
+    }
+    else if (user === "sidious") {
+        user = sidious;
+        $("#shp").html(user.healthPoints);
+    }
+    if (enemy === "yoda") {
+        enemy = yoda;
+        $("#yhp").html(enemy.healthPoints);
+    }
+    else if (enemy === "chewy") {
+        enemy = chewy;
+        $("#chp").html(enemy.healthPoints);
+    }
+    else if (enemy === "vader") {
+        enemy = vader;
+        $("#vhp").html(enemy.healthPoints);
+    }
+    else if (enemy === "sidious") {
+        enemy = sidious;
+        $("#shp").html(enemy.healthPoints);
+    }
 });
 
 
-// var attack = $("#userEnemy.healthPoints") - $("#userPick.attackPower")
-// take userp's ap from usero's hp and add ap to ap
-// also take usero's cp from userp's hp
