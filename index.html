@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <h1>STAR WARS RPG</h1>
+    <h1>STAR WARS</h1>
     <div class="fighter">
-    <div class="row" id="fighter">
+        <div class="row" id="fighter">
             <div class="col-3">
                 <div class="card" id="yoda">
                     <h5>YODA</h5>
@@ -56,23 +56,28 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-3">
-            <h2>YOU</h2>
+        <div class="col-5">
+            <h2 id="yW">YOU</h2>
         </div>
-        <div class="col-3">
-            <h2>ENEMY</h2>
+        <div class="col-2"></div>
+        <div class="col-5">
+            <h2 id="eW">ENEMY</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-3">
+        <div class="col-5">
             <div id="userPick"></div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
+            <div id="btn" class="btn btn-warning">ATTACK</div>
+        </div>
+        <div class="col-5">
             <div id="userEnemy"></div>
         </div>
     </div>
-
-    <div class="btn btn-warning">ATTACK</div>
+    <div id="winner"></div>
+    <div id="win" class="col-12"></div>
+    <div id="btnr" class="btn btn-warning">RESTART</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/game.js"></script>

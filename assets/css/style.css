@@ -1,14 +1,30 @@
 body {
     /* font-family: Star Jedi; */
     font-family: 'Poller One', cursive;
+    box-shadow: white 10px;
     color: #ffd700;
 }
 h1 {
     text-align: center;
+    letter-spacing: -4px;
 }  
+
+h2 {
+    
+}
+
+.btn:hover{
+    border: solid white 3px;
+}
 
 h2, .btn{
     margin:20px;
+    text-align: center;
+}
+
+#yoda:hover, #chewy:hover{
+    border:solid #00ff11 4px;
+    color: #00ff11;
 }
 
 #yoda {
@@ -20,6 +36,11 @@ h2, .btn{
     background: url(../images/chewy.jpeg);
     background-size: 100%;
 
+}
+
+#vader:hover, #sidious:hover{
+    border:solid #ff0000 4px;
+    color: #ff0000;
 }
 
 #vader {
@@ -36,6 +57,7 @@ h2, .btn{
 h5, h6 {  
     font-style: bold;
 }
+
 
 .card {
     margin: 20px;

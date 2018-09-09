@@ -1,4 +1,3 @@
-
 var yoda = {
     healthPoints: 140,
     attack: 8,
@@ -24,7 +23,6 @@ var vader = {
     counterPower: 13,
 }
 
-
 function checkUser() {
     user = $("#userPick").children()[0].id
 }
@@ -40,14 +38,23 @@ function userAfter() {
     user.attackPower = user.attackPower + user.attack;
 }
 
+$("#yW").hide();
+$("#eW").hide();
+$("#btn").hide();
+
 $("#yoda").on("click", function () {
     if ($("#userPick").is(':empty')) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/yodaf.jpg)');
+        $("#yoda").height(200);
+        $("#yW").show();
     }
     else if ($("#userEnemy").is(':empty')) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/yodaf.jpg)');
+        $("#yoda").height(200);
+        $("#eW").show();
+        $("#btn").show();
     }
     else { }
 });
@@ -56,10 +63,15 @@ $("#chewy").on("click", function () {
     if ($("#userPick").is(':empty')) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/chewyf.jpg)');
+        $("#chewy").height(200);
+        $("#yW").show();
     }
     else if ($("#userEnemy").is(':empty')) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/chewyf.jpg)');
+        $("#chewy").height(200);
+        $("#eW").show();
+        $("#btn").show();
     }
     else { }
 });
@@ -68,10 +80,15 @@ $("#vader").on("click", function () {
     if ($("#userPick").is(':empty')) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/vaderf.jpg)');
+        $("#vader").height(200);
+        $("#yW").show();
     }
     else if ($("#userEnemy").is(':empty')) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/vaderf.jpg)');
+        $("#vader").height(200);
+        $("#eW").show();
+        $("#btn").show();
     }
     else { }
 });
@@ -80,16 +97,21 @@ $("#sidious").on("click", function () {
     if ($("#userPick").is(':empty')) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/sidiousf.png)');
+        $("#sidious").height(200);
+        $("#yW").show();
     }
     else if ($("#userEnemy").is(':empty')) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/sidiousf.png)');
+        $("#sidious").height(200);
+        $("#eW").show();
+        $("#btn").show();
     }
     else { }
 });
 
 
-$(".btn").on("click", function () {
+$("#btn").on("click", function () {
     if ($("#userPick").is(':empty')) {
         alert("CHOOSE YOUR CHARECTER!")
     }
@@ -139,7 +161,7 @@ function defeated() {
     defeat++;
 }
 
-$(".btn").on("click", function () {
+$("#btn").on("click", function () {
     enemyAfter();
     userAfter();
     console.log("My health: " + user.healthPoints);
@@ -149,8 +171,6 @@ $(".btn").on("click", function () {
         console.log(defeat);
         defeated();
         $("#userEnemy").empty();
-        // $("#userPick").width(600);
-        // $("#userPick").height(300);
     }
     if (user.healthPoints && enemy.healthPoints <= 0) {
 
@@ -158,15 +178,26 @@ $(".btn").on("click", function () {
     }
     if ((user.healthPoints <= 0) && !(enemy.healthPoints <= 0)) {
         $("#userPick").empty();
-        $(".card").width(600);
-        $(".card").height(300);
-        alert("LOSER");
+        // $(".card").width(800);
+        $(".card").height(500);
+        $("#eW").html("ENEMY WINS!").position("center");
+        $("#yW").hide();
+        $(".btn").hide();
+        $("h6").hide();
+        $("#win").append($("#userEnemy"));
+        $("#userEnemy").attr("disabled","disabled");
     }
     if (defeat === 3) {
         $("#userEnemy").empty();
-        $(".card").width(600);
-        $(".card").height(300);
-        alert("WINNER");
+        // $(".card").width(800);
+        $(".card").height(500);
+        $("#yW").html("YOU WIN!").position("center");
+        $("#eW").hide();
+        $(".btn").hide();
+        $("h6").hide();
+        $("#win").append($("#userPick"));
+        $("#win").attr("disabled","disabled");
+        
     }
     checkUser();
     checkEnemy();
@@ -202,6 +233,13 @@ $(".btn").on("click", function () {
         enemy = sidious;
         $("#shp").html(enemy.healthPoints);
     }
+
 });
+
+
+$("#btnr").hide();
+// $("#btnr").on("click", function (){
+//     resart()
+// });
 
 
