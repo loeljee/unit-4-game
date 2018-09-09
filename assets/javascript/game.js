@@ -23,9 +23,20 @@ var vader = {
     counterPower: 13,
 }
 var defeat = 0;
+var lightSaber;
+var starSong;
+var winSound;
+var loseSound;
+
+starSong = new Audio("assets/sounds/music.mp3");
+lightSaber = new Audio("assets/sounds/attack.mp3");
+winSound = new Audio("assets/sounds/win.mp3");
+loseSound = new Audio("assets/sounds/lose.mp3");
+
 $("#yW").hide();
 $("#eW").hide();
 $("#btn").hide();
+starSong.play();
 
 function defeated() {
     defeat++;
@@ -122,6 +133,7 @@ $("#btn").on("click", function () {
     checkUser();
     checkEnemy();
     if (!$("#userEnemy").is(':empty')) {
+        lightSaber.play();
         if (user === "yoda") {
             user = yoda;
             $("#yhp").html(user.healthPoints);
@@ -174,6 +186,7 @@ $("#btn").on("click", function () {
         $("h6").hide();
         $("#win").append($("#userEnemy"));
         $("#btrn").show();
+        loseSound.play();
     }
     if (defeat === 3) {
         $("#userEnemy").empty();
@@ -185,6 +198,7 @@ $("#btn").on("click", function () {
         $("h6").hide();
         $("#win").append($("#userPick"));
         $("#btrn").show();
+        winSound.play();
     }
     checkUser();
     checkEnemy();
