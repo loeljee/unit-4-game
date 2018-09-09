@@ -14,7 +14,9 @@ h2 {
 }
 
 .btn:hover{
-    border: solid white 3px;
+    box-shadow:
+    0 0 30px 15px #fff,
+    0 0 50px 30px  hsl(181, 100%, 50%);
 }
 
 h2, .btn{
@@ -23,34 +25,40 @@ h2, .btn{
 }
 
 #yoda:hover, #chewy:hover{
-    border:solid #00ff11 4px;
     color: #00ff11;
+    box-shadow:
+    0 0 30px 15px #fff,
+    0 0 50px 30px  #00ff11;
+
 }
 
 #yoda {
     background: url(../images/yoda.jpg);
-    background-size: 100%;
+    background-size: cover;
 }
 
 #chewy {
     background: url(../images/chewy.jpeg);
-    background-size: 100%;
+    background-size: cover;
 
 }
 
 #vader:hover, #sidious:hover{
-    border:solid #ff0000 4px;
     color: #ff0000;
+    box-shadow:
+        0 0 30px 15px #fff,
+        0 0 50px 30px #ff0000;
+      
 }
 
 #vader {
     background: url(../images/vader.jpeg);
-    background-size: 100%;
+    background-size: cover;
 }
 
 #sidious {
     background: url(../images/sidious.jpg);
-    background-size: 120%;
+    background-size: cover;
     background-position: -30px 0px;
 }
 
@@ -68,5 +76,5 @@ h5, h6 {
 
 body {
     background: url(../images/space.jpg);
-    background-size: 130%;
+    background-size: cover;
 }

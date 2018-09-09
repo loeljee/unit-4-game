@@ -22,14 +22,20 @@ var vader = {
     attackPower: 7,
     counterPower: 13,
 }
+var defeat = 0;
+$("#yW").hide();
+$("#eW").hide();
+$("#btn").hide();
 
+function defeated() {
+    defeat++;
+}
 function checkUser() {
     user = $("#userPick").children()[0].id
 }
 function checkEnemy() {
     enemy = $("#userEnemy").children()[0].id
 }
-
 function enemyAfter() {
     enemy.healthPoints = enemy.healthPoints - user.attackPower;
 }
@@ -38,35 +44,30 @@ function userAfter() {
     user.attackPower = user.attackPower + user.attack;
 }
 
-$("#yW").hide();
-$("#eW").hide();
-$("#btn").hide();
-
 $("#yoda").on("click", function () {
-    if ($("#userPick").is(':empty')) {
+    if (($("#userPick").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/yodaf.jpg)');
         $("#yoda").height(200);
         $("#yW").show();
     }
-    else if ($("#userEnemy").is(':empty')) {
+    else if (($("#userEnemy").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/yodaf.jpg)');
         $("#yoda").height(200);
         $("#eW").show();
         $("#btn").show();
     }
-    else { }
 });
 
 $("#chewy").on("click", function () {
-    if ($("#userPick").is(':empty')) {
+    if (($("#userPick").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/chewyf.jpg)');
         $("#chewy").height(200);
         $("#yW").show();
     }
-    else if ($("#userEnemy").is(':empty')) {
+    else if (($("#userEnemy").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/chewyf.jpg)');
         $("#chewy").height(200);
@@ -77,13 +78,13 @@ $("#chewy").on("click", function () {
 });
 
 $("#vader").on("click", function () {
-    if ($("#userPick").is(':empty')) {
+    if (($("#userPick").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/vaderf.jpg)');
         $("#vader").height(200);
         $("#yW").show();
     }
-    else if ($("#userEnemy").is(':empty')) {
+    else if (($("#userEnemy").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/vaderf.jpg)');
         $("#vader").height(200);
@@ -94,13 +95,13 @@ $("#vader").on("click", function () {
 });
 
 $("#sidious").on("click", function () {
-    if ($("#userPick").is(':empty')) {
+    if (($("#userPick").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userPick").append(this);
         $(this).css('backgroundImage', 'url(assets/images/sidiousf.png)');
         $("#sidious").height(200);
         $("#yW").show();
     }
-    else if ($("#userEnemy").is(':empty')) {
+    else if (($("#userEnemy").is(':empty')) && ($("#winner").is(':empty'))) {
         $("#userEnemy").append(this);
         $(this).css('backgroundImage', 'url(assets/images/sidiousf.png)');
         $("#sidious").height(200);
@@ -156,48 +157,34 @@ $("#btn").on("click", function () {
     }
 });
 
-var defeat = 0;
-function defeated() {
-    defeat++;
-}
-
 $("#btn").on("click", function () {
     enemyAfter();
     userAfter();
-    console.log("My health: " + user.healthPoints);
-    console.log("Enemy health: " + enemy.healthPoints);
-    console.log(user.attackPower);
     if (enemy.healthPoints <= 0) {
-        console.log(defeat);
         defeated();
         $("#userEnemy").empty();
     }
-    if (user.healthPoints && enemy.healthPoints <= 0) {
-
-
-    }
     if ((user.healthPoints <= 0) && !(enemy.healthPoints <= 0)) {
         $("#userPick").empty();
-        // $(".card").width(800);
         $(".card").height(500);
-        $("#eW").html("ENEMY WINS!").position("center");
+        $("#winner").html("YOU LOSE!");
         $("#yW").hide();
-        $(".btn").hide();
-        $("h6").hide();
-        $("#win").append($("#userEnemy"));
-        $("#userEnemy").attr("disabled","disabled");
-    }
-    if (defeat === 3) {
-        $("#userEnemy").empty();
-        // $(".card").width(800);
-        $(".card").height(500);
-        $("#yW").html("YOU WIN!").position("center");
         $("#eW").hide();
         $(".btn").hide();
         $("h6").hide();
+        $("#win").append($("#userEnemy"));
+        $("#btrn").show();
+    }
+    if (defeat === 3) {
+        $("#userEnemy").empty();
+        $(".card").height(500);
+        $("#winner").html("YOU WIN!")
+        $("#eW").hide();
+        $("#yW").hide();
+        $(".btn").hide();
+        $("h6").hide();
         $("#win").append($("#userPick"));
-        $("#win").attr("disabled","disabled");
-        
+        $("#btrn").show();
     }
     checkUser();
     checkEnemy();
@@ -235,11 +222,11 @@ $("#btn").on("click", function () {
     }
 
 });
+$("#btnr").on("click", function (){
+    resetGame();
+});
 
 
-$("#btnr").hide();
-// $("#btnr").on("click", function (){
-//     resart()
-// });
+
 
 
