@@ -236,7 +236,7 @@ $("#btn").on("click", function () {
     }
 
 });
-$("#btnr").on("click", function (){
+$("#btnr").on("click", function () {
     resetGame();
 });
 
